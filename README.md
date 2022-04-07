@@ -1,4 +1,4 @@
-# Final Project: Study of Billionaires
+# Exploratory Data Analysis: Study of Billionaires
 
 ## Group Members
 Christie Yang  
