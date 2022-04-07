@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Study of Billionaires</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Zhuojian Wei, Christie Yang, Everett Cheng, Yuan Zhang" />
+    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Study of Billionaires
+## Stats 68 Group Project
+### Zhuojian Wei, Christie Yang, Everett Cheng, Yuan Zhang
+### 2021/06/03
+
+---
+
+
+# Introduction
+
+- In this project, our goal is to figure out what factors contribute to the rank in which certain billionaires fall.
+
+- In order to calculate this we utilized the wealth worth in billions variable that was the basis of the rank. Billionaires with a higher rank had a high wealth worth in billions. 
+
+- We will be using simple linear regression and randomization test for variables such as age and gender.
+
+- We also explore other variables such as region by visualization.
+
+---
+# Data - billionaires
+
+
+
+ 
+
+
+- The source for the billionaires.csv data set stems from the Forbes World’s Billionaires lists from 1996-2014. Scholars from the Peterson Institute for International Economics contributed more variables to the data set regarding specific billionaires. The host of the data is from the CORGIS Dataset Project. https://think.cs.vt.edu/corgis/csv/billionaires/
+
+- This data set also included multiple years, however, we decided to focus on the year 2014 for our research.
+
+- There are __22__ variables and __1653__ observations for 2014
+
+- For the purpose of this study, we utilized the numeric variable wealth.worth in billions which is how the rank was chosen for each billionaire. The higher their worth in billions the higher their rank. 
+
+---
+class: middle
+
+# Research Questions
+- Is there a difference between the mean of wealth worth in billions for male and that for female? In other words, does a persons wealth depend on their gender?
+
+- Does the region an individual live influence whether of not the average person is likely to be a billionaire? 
+
+- Is there a certain age, or age range where someone is more likely to be a higher ranked billionaire?
+
+---
+### Visualization on company.founded
+
+.pull-left[
+&lt;img src="presentation_files/figure-html/unnamed-chunk-3-1.png" title="Scatterplot with x axis being the year founded and y axis being the rankings for billionaires. It is split into a facid grid with 3 columns, 1996, 2001, and 2014. The year 2014 has much more points leading up the y axis." alt="Scatterplot with x axis being the year founded and y axis being the rankings for billionaires. It is split into a facid grid with 3 columns, 1996, 2001, and 2014. The year 2014 has much more points leading up the y axis."  /&gt;
+]
+.pull-right[
+Based on the graph of wealth rankings and year of foundation under different years, the majority of billionaires founded their companies in 1900-2000. There were many top wealth rankings came from the majority group. Therefore, it is not the case that the rank and foundation years are positively related. People can set up a company relatively late and still become top-ranking billionaires.
+]
+---
+
+### Inherited or self made? 
+
+
+The billionaires data set has a variable called __wealth.type__. This variable accounts for the type of wealth the billionaires owns. We found that inherited has the highest ranking median of wealth, so those people might have decent positions on the wealth board. 
+
+---
+
+### Visualization of wealth worth and genders (2014)
+
+.pull-left[
+&lt;img src="presentation_files/figure-html/unnamed-chunk-5-1.png" title="A violin plot, which the x axis is gender, the y axis is weath worth in billion. For both genders, the wealth worth mainly falls on the region that is less than 10 billions. However, there are more male billionaires. Also, many male billionaires have wealth more than 40 billions, while female does not." alt="A violin plot, which the x axis is gender, the y axis is weath worth in billion. For both genders, the wealth worth mainly falls on the region that is less than 10 billions. However, there are more male billionaires. Also, many male billionaires have wealth more than 40 billions, while female does not."  /&gt;
+]
+
+.pull-right[
+  From the data on the violin graph it seems like both female and male are pretty evenly distributed among the rankings. 
+  
+  However, based on the larger base on the male violin, it seems like there are more male billionaires who are higher on the rankings list than females. 
+  
+  The top 500 rankings lean more towards male than they do females.
+]
+---
+
+### Visualization of top 50 billionaires rank
+.pull-right[
+  &lt;font size="4"&gt;   For the top 50 billionaires, you can see the relationship between a billionaires rank 
+  and wealth in billions is inversely related.
+  
+  The wealthier a billionaire is the lower 
+  their rank number will be. &lt;/font&gt; 
+]
+
+.pull-left[
+&lt;img src="presentation_files/figure-html/unnamed-chunk-6-1.png" title="A scatter plot, which the x axis is the rank and the y axis is the wealth worth in billions. The plot shows that as the rank become lower, the wealth worth become lower." alt="A scatter plot, which the x axis is the rank and the y axis is the wealth worth in billions. The plot shows that as the rank become lower, the wealth worth become lower." style="display: block; margin: auto auto auto 0;" /&gt;
+]
+---
+
+# Randomization Test - 95% significant level
+`$$H_0: \mu_1 - \mu_2 = 0$$`
+`$$H_1: \mu_1 - \mu_2 \neq 0$$`
+`\(\mu_1 = the\ mean \ of\ wealth\ worth\ for\ male\)`
+
+`\(\mu_2 = the\ mean \ of\ wealth\ worth\ for\ female\)`
+
+
+
+- Calculate the observed mean difference
+
+- Randomly assign (sample) genders to each wealth worth for 1000 times
+
+- Calculate the the sample mean for each gender
+
+- Calculate the test statistics and the p-value
+---
+.pull-left[
+![](presentation_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+__Observed difference__ = -0.01784
+
+__p-value__ = 0.438 &gt; 0.05
+
+__Conclusion__: We failed to reject the null hypothesis. There is no significant evidence that there is a difference between the mean of wealth worth in billions for male and that for female in 2014.
+
+
+Even though there is no difference between two means. The proportion of female billionaires is much smaller than that of male billionaires (0.1088929 vs. 0.8911071)
+]
+---
+
+# Linear Regression Model on Age and Wealth
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-9-1.png" title="A dot plot with a positively sloped line of the relationship between age and log of wealth for top 50 billionaires aged from 20 to 90." alt="A dot plot with a positively sloped line of the relationship between age and log of wealth for top 50 billionaires aged from 20 to 90." style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+# Condition Checkings
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-10-1.png" title="Residuals vs fitted plot with a curved horizontal line around zero" alt="Residuals vs fitted plot with a curved horizontal line around zero" width="60%" /&gt;
+### Linear Relationship Assumption
+
+---
+
+class: center
+# Condition Checkings
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-11-1.png" title="A normal Quantile-Quantile plot with a S shape. Few residuals follow the straight dashed line." alt="A normal Quantile-Quantile plot with a S shape. Few residuals follow the straight dashed line." width="60%" /&gt;
+### Normality of residuals
+
+---
+
+class: center
+# Condition Checkings
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-12-1.png" title="A scale-locatio plot of a horizontal line with equally spread points, but the horizontal line went down a little toward right" alt="A scale-locatio plot of a horizontal line with equally spread points, but the horizontal line went down a little toward right" width="60%" /&gt;
+
+### Constant Variance Assumption
+
+---
+
+class: center, top
+# Linear Model
+`$$log(\hat{wealth_i}) = 2.992 + 0.004* age_i$$`
+
+
+|term             |  estimate| std.error| statistic|   p.value|
+|:----------------|---------:|---------:|---------:|---------:|
+|(Intercept)      | 2.9929228| 0.2724429| 10.985505| 0.0000000|
+|demographics.age | 0.0043008| 0.0039792|  1.080819| 0.2851783|
+
+--
+
+### Confidence Interval
+
+
+|                 |      2.5 %|    97.5 %|
+|:----------------|----------:|---------:|
+|(Intercept)      |  2.4451396| 3.5407059|
+|demographics.age | -0.0036999| 0.0123014|
+
+
+---
+class: center, middle
+
+## Expected wealth for a billionaire with age 30
+
+--
+
+`$$log(\hat{wealth_i}) = 2.992 + 0.004* age_i$$`
+
+--
+`$$log(\hat{wealth}) =  2.992 + 0.004* 30$$`
+--
+
+`$$log(\hat{wealth}) = 3.112$$`
+--
+
+The expected wealth for a 30 year old billionaire is 3.112 billion of dollars.
+---
+# Conclusion
+
+- For billionaires, there is a positive linear relationship between wealth and age
+
+- Although the average wealth between males and females are pretty similar, there is a great difference between the proportion of men compared to women within these rankings
+
+- Those with inherited wealth had the highest ranking median of wealth compared to those who were self-made
+
+- Most companies were founded between 1900-2000, with only a few before and after. There is no relationship between the year one's company was founded and their total wealth.
+---
+
+class: center, middle
+# Thank you for watching!
+
+.pull-left[
+
+&lt;img src="img/Maomao.jpg" title="A small yellowish furry dog with a smiling face" alt="A small yellowish furry dog with a smiling face"  /&gt;
+  
+Maomao is saying thank you.
+
+]
+
+
+.pull-right[
+
+&lt;img src="img/toto.jpg" title="A small tan fluffy dog sleeping" alt="A small tan fluffy dog sleeping"  /&gt;
+
+Toto hopes you have a good day!! 
+
+]
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
