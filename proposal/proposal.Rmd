@@ -1,8 +1,5 @@
 ---
-title: "Proposal"
-author: "Group 8"
-date: "5/7/2021"
-output: html_document
+output: github_document
 ---
 
 # Introduction
