@@ -1,4 +1,4 @@
-# Exploratory Data Analysis: Study of Billionaires
+# Study of Billionaires
 
 An exploratory data analysis (EDA) of studying top wealth rankings about billionaires.
 
