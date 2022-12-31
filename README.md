@@ -1,15 +1,13 @@
 # Study of Billionaires
 
-An exploratory data analysis (EDA) of studying top wealth rankings about billionaires.
+This project analyzed the Forbes World's Billionaires lists from 1996-2014, using 22 variables and 2614 observations from the [CORGIS Dataset Project](https://corgis-edu.github.io/corgis/csv/billionaires/).
 
-The source for the [billionaires.csv](https://think.cs.vt.edu/corgis/datasets/csv/billionaires/billionaires.csv) dataset stems from Forbes World's Billionaires lists from 1996-2014. There are 22 variables and 2614 observations. The [host](https://think.cs.vt.edu/corgis/csv/billionaires/) of the data is from the [CORGIS Dataset Project](https://corgis-edu.github.io/corgis/). For more detailed descriptions, please visit: <https://think.cs.vt.edu/corgis/csv/billionaires>.
+The goal was to identify factors influencing the rank of billionaires based on their income. The focus was on age, gender, company type, location, inherited wealth, and the year the company was founded. The analysis included a simple linear regression of the relationship between age and wealth, and a randomization test on the difference in mean wealth between male and female billionaires in 2014.
 
-In this project, our goal is to figure out what factors contribute to the rank in which certain billionaires fall. The rank is comparing the income between billionaires and we are interested in whether age, gender, company type, location, inherited through family, or the year the company was founded, played a large factor in their rank. Before we analysis, we only select year 2014. We utilized a simple linear regression modeling on the relationship between age and wealth, and a randomization testing on gender and wealth. 
+The results showed a positive linear relationship between wealth and age, and no significant difference in mean wealth between male and female billionaires in 2014. However, the proportion of female billionaires was much smaller than that of male billionaires.
 
-We found that there is a positive linear relationship between wealth and age, and there is no significant evidence that there is a difference between the mean of wealth worth in billions for male and that for female in 2014. Even though there is no difference between two means. The proportion of female billionaires is much smaller than that of male billionaires.
 
 ### Group Members
-
 Christie Yang  
 Everett Cheng  
 Yuan Zhang  
